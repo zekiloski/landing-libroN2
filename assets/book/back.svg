@@ -1,14 +1,28 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="1200" viewBox="0 0 800 1200">
-  <rect width="800" height="1200" fill="#1b1a17"/>
-  <rect x="40" y="40" width="720" height="1120" fill="none" stroke="#f4f0e8" stroke-width="2" opacity=".5"/>
-  <rect x="130" y="330" width="540" height="10" fill="#f4f0e8" opacity=".35"/>
-  <rect x="130" y="376" width="540" height="10" fill="#f4f0e8" opacity=".35"/>
-  <rect x="130" y="422" width="540" height="10" fill="#f4f0e8" opacity=".35"/>
-  <rect x="130" y="468" width="540" height="10" fill="#f4f0e8" opacity=".35"/>
-  <rect x="130" y="514" width="540" height="10" fill="#f4f0e8" opacity=".35"/>
-  <rect x="130" y="560" width="540" height="10" fill="#f4f0e8" opacity=".35"/>
-  <rect x="130" y="606" width="540" height="10" fill="#f4f0e8" opacity=".35"/>
-  <rect x="130" y="652" width="540" height="10" fill="#f4f0e8" opacity=".35"/>
-  <rect x="130" y="698" width="300" height="10" fill="#f4f0e8" opacity=".35"/>
-  <text x="400" y="1110" text-anchor="middle" font-family="Georgia, serif" font-size="22" letter-spacing="6" fill="#f4f0e8" opacity=".6">CONTRATAPA</text>
+  <rect width="800" height="1200" fill="#0a0a0b"/>
+  <rect x="24" y="24" width="752" height="1152" rx="10" fill="#ecebe4"/>
+  <circle cx="110" cy="130" r="38" fill="#c9ff3d" stroke="#0a0a0b" stroke-width="2"/>
+  <text x="72" y="330" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="64" letter-spacing="-1" fill="#0a0a0b">«Una frase que</text>
+  <text x="72" y="410" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="64" letter-spacing="-1" fill="#0a0a0b">resume el libro</text>
+  <text x="72" y="490" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="64" letter-spacing="-1" fill="#0a0a0b">en pocas palabras.»</text>
+  <g fill="#0a0a0b" opacity=".2">
+    <rect x="72" y="590" width="656" height="14" rx="7"/>
+    <rect x="72" y="630" width="620" height="14" rx="7"/>
+    <rect x="72" y="670" width="656" height="14" rx="7"/>
+    <rect x="72" y="710" width="560" height="14" rx="7"/>
+    <rect x="72" y="750" width="640" height="14" rx="7"/>
+    <rect x="72" y="790" width="380" height="14" rx="7"/>
+  </g>
+  <text x="72" y="1090" font-family="Consolas, 'Courier New', monospace" font-size="20" letter-spacing="5" fill="#0a0a0b">NOMBRE DEL AUTOR</text>
+  <text x="72" y="1126" font-family="Consolas, 'Courier New', monospace" font-size="20" letter-spacing="5" fill="#0a0a0b" opacity=".55">CONTRATAPA</text>
+  <g fill="#0a0a0b">
+    <rect x="560" y="1010" width="6" height="116"/><rect x="572" y="1010" width="2" height="116"/>
+    <rect x="580" y="1010" width="8" height="116"/><rect x="594" y="1010" width="2" height="116"/>
+    <rect x="602" y="1010" width="4" height="116"/><rect x="612" y="1010" width="10" height="116"/>
+    <rect x="628" y="1010" width="2" height="116"/><rect x="636" y="1010" width="6" height="116"/>
+    <rect x="648" y="1010" width="2" height="116"/><rect x="656" y="1010" width="8" height="116"/>
+    <rect x="670" y="1010" width="4" height="116"/><rect x="680" y="1010" width="2" height="116"/>
+    <rect x="688" y="1010" width="10" height="116"/><rect x="704" y="1010" width="2" height="116"/>
+    <rect x="712" y="1010" width="6" height="116"/><rect x="724" y="1010" width="4" height="116"/>
+  </g>
 </svg>

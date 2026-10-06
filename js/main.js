@@ -39,6 +39,9 @@
     const hero = document.querySelector('.hero');
     const canvas = hero && hero.querySelector('.hero__canvas');
     const toggle = hero && hero.querySelector('.hero__toggle');
+    const countNow = hero && hero.querySelector('.hero__count-now');
+    const countTotal = hero && hero.querySelector('.hero__count-total');
+    const progress = hero && hero.querySelector('.hero__progress i');
     if (!canvas || !canvas.getContext) return;
 
     const ctx = canvas.getContext('2d', { alpha: false });
@@ -79,8 +82,20 @@
       return buffer;
     }
 
+    const pad = (n) => String(n).padStart(2, '0');
+
+    // Contador "01 ▬ 12" y barra de avance de la secuencia.
+    function mark() {
+      const total = frames.length || HERO.images.length;
+      const now = (current % total) + 1;
+      if (countNow) countNow.textContent = pad(now);
+      if (countTotal) countTotal.textContent = pad(total);
+      if (progress) progress.style.transform = `scaleX(${now / total})`;
+    }
+
     function resize() {
-      const { width, height } = hero.getBoundingClientRect();
+      // El lienzo vive dentro del marco redondeado, no ocupa todo el hero.
+      const { width, height } = canvas.getBoundingClientRect();
       if (!width || !height) return;
       const dpr = Math.min(
         window.devicePixelRatio || 1,
@@ -123,6 +138,7 @@
         previous = current;
         current = (current + 1) % frames.length;
         switchedAt = now;
+        mark();
       }
       draw(now);
     }
@@ -176,7 +192,42 @@
       sources.push(...loaded.filter(Boolean));
       frames = [];
       resize();
+      mark();
       update();
+    });
+  }
+
+  /* ---------- Libro 3D ---------- */
+
+  function initBook() {
+    const stage = document.querySelector('.book__stage');
+    const book = stage && stage.querySelector('.book3d');
+    const flip = stage && stage.querySelector('.book__flip');
+    if (!book) return;
+
+    if (flip) {
+      const label = flip.querySelector('.book__flip-label');
+      flip.addEventListener('click', () => {
+        const flipped = flip.getAttribute('aria-pressed') !== 'true';
+        flip.setAttribute('aria-pressed', String(flipped));
+        book.classList.toggle('is-flipped', flipped);
+        if (label) label.textContent = flipped ? 'Ver tapa' : 'Ver contratapa';
+      });
+    }
+
+    // Inclinación siguiendo al puntero: solo con mouse y si no se pidió menos movimiento.
+    if (!window.matchMedia('(hover: hover)').matches) return;
+    stage.addEventListener('pointermove', (event) => {
+      if (reducedMotion.matches) return;
+      const rect = stage.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width - 0.5;
+      const y = (event.clientY - rect.top) / rect.height - 0.5;
+      book.style.setProperty('--ry', `${(-26 + x * 36).toFixed(1)}deg`);
+      book.style.setProperty('--rx', `${(4 - y * 16).toFixed(1)}deg`);
+    });
+    stage.addEventListener('pointerleave', () => {
+      book.style.removeProperty('--ry');
+      book.style.removeProperty('--rx');
     });
   }
 
@@ -262,6 +313,7 @@
   }
 
   initHero();
+  initBook();
   initReveal();
   initForm();
 })();

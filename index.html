@@ -5,21 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Título del Libro — Nombre del Autor</title>
   <meta name="description" content="Título del Libro, de Nombre del Autor.">
-  <meta name="theme-color" content="#0e0d0b">
+  <meta name="theme-color" content="#0a0a0b">
 
   <link rel="preload" as="image" href="assets/hero/01.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
 
-  <!-- 1. Hero: secuencia rápida de imágenes a pantalla completa -->
+  <!-- 1. Hero: secuencia rápida de imágenes dentro de un marco redondeado -->
   <header class="hero" id="inicio">
-    <canvas class="hero__canvas" aria-hidden="true"></canvas>
-    <div class="hero__shade" aria-hidden="true"></div>
+    <div class="hero__media" aria-hidden="true">
+      <canvas class="hero__canvas"></canvas>
+      <div class="hero__shade"></div>
+    </div>
 
     <nav class="hero__nav" aria-label="Principal">
       <a class="wordmark" href="#inicio">Nombre del Autor</a>
@@ -28,40 +30,75 @@
 
     <div class="hero__text">
       <p class="eyebrow">Un libro de Nombre del Autor</p>
-      <h1 class="hero__title">Título del Libro</h1>
+      <h1 class="hero__title">Título <em>del Libro</em></h1>
       <p class="hero__lede">Una línea breve que acompaña la imagen.</p>
     </div>
 
-    <a class="hero__cue" href="#libro">Descubrir</a>
+    <div class="hero__bar">
+      <a class="hero__cue" href="#libro">Descubrir</a>
 
-    <button class="hero__toggle" type="button" aria-pressed="false" aria-label="Pausar secuencia de imágenes">
-      <span class="hero__toggle-icon" aria-hidden="true"></span>
-    </button>
+      <p class="hero__count" aria-hidden="true">
+        <span class="hero__count-now">01</span>
+        <span class="hero__progress"><i></i></span>
+        <span class="hero__count-total">12</span>
+      </p>
+
+      <button class="hero__toggle" type="button" aria-pressed="false" aria-label="Pausar secuencia de imágenes">
+        <span class="hero__toggle-icon" aria-hidden="true"></span>
+      </button>
+    </div>
   </header>
+
+  <!-- Cinta en movimiento: puramente decorativa -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span>Título del Libro</span><span><em>Nombre del Autor</em></span><span>Editorial</span><span><em>2026</em></span>
+      <span>Título del Libro</span><span><em>Nombre del Autor</em></span><span>Editorial</span><span><em>2026</em></span>
+    </div>
+  </div>
 
   <main>
     <!-- 2. Libro -->
     <section class="book" id="libro" aria-labelledby="libro-titulo">
-      <div class="book__covers reveal">
-        <img class="book__cover book__cover--back" src="assets/book/back.svg" width="800" height="1200" alt="Contratapa de Título del Libro" loading="lazy" decoding="async">
-        <img class="book__cover book__cover--front" src="assets/book/front.svg" width="800" height="1200" alt="Tapa de Título del Libro" loading="lazy" decoding="async">
+      <div class="book__stage reveal">
+        <div class="book__float">
+          <div class="book3d">
+            <img class="book3d__face book3d__face--front" src="assets/book/front.svg" width="800" height="1200" alt="Tapa de Título del Libro" loading="lazy" decoding="async">
+            <img class="book3d__face book3d__face--back" src="assets/book/back.svg" width="800" height="1200" alt="Contratapa de Título del Libro" loading="lazy" decoding="async">
+            <span class="book3d__edge book3d__edge--spine" aria-hidden="true"></span>
+            <span class="book3d__edge book3d__edge--pages" aria-hidden="true"></span>
+            <span class="book3d__edge book3d__edge--top" aria-hidden="true"></span>
+            <span class="book3d__edge book3d__edge--bottom" aria-hidden="true"></span>
+          </div>
+        </div>
+        <button class="book__flip" type="button" aria-pressed="false">
+          <span class="book__flip-label">Ver contratapa</span>
+        </button>
       </div>
 
       <div class="book__copy reveal">
-        <p class="eyebrow">El libro</p>
-        <h2 class="section-title" id="libro-titulo">Título del Libro</h2>
+        <p class="eyebrow eyebrow--tag">El libro</p>
+        <h2 class="section-title" id="libro-titulo">Título <em>del Libro</em></h2>
         <p>Un párrafo corto que presenta el libro. Dos o tres frases alcanzan: de qué trata, para quién es y por qué importa ahora.</p>
         <p>Una segunda idea, si hace falta. El resto lo dicen las imágenes.</p>
-        <p class="book__meta">Nombre del Autor · Editorial · 2026</p>
+        <p class="book__meta"><span>Nombre del Autor</span><span>Editorial</span><span>2026</span></p>
       </div>
+
+      <ul class="book__shots" aria-label="Imágenes del libro">
+        <li class="reveal"><img src="assets/gallery/01.jpg" width="1200" height="900" alt="Cámara analógica apoyada sobre las teclas de un piano" loading="lazy" decoding="async"></li>
+        <li class="reveal"><img src="assets/gallery/02.jpg" width="1200" height="900" alt="Camino que sube entre colinas, en blanco y negro" loading="lazy" decoding="async"></li>
+        <li class="reveal"><img src="assets/gallery/03.jpg" width="1200" height="900" alt="Persona sentada en un banco frente a los edificios de la ciudad" loading="lazy" decoding="async"></li>
+      </ul>
     </section>
 
     <!-- 3. Llamada a la acción -->
     <section class="cta" id="conectar" aria-labelledby="cta-titulo">
       <div class="cta__inner reveal">
-        <p class="eyebrow">Conectar</p>
-        <h2 class="section-title" id="cta-titulo">Conversemos.</h2>
-        <p class="cta__lede">Dejá tus datos y contanos un poco más. Respondemos personalmente.</p>
+        <div class="cta__intro">
+          <p class="eyebrow">Conectar</p>
+          <h2 class="section-title" id="cta-titulo">Conver<em>semos.</em></h2>
+          <p class="cta__lede">Dejá tus datos y contanos un poco más. Respondemos personalmente.</p>
+        </div>
 
         <!--
           data-endpoint: URL que recibe el envío (Formspree, Web3Forms, Basin, función propia…).
@@ -95,7 +132,11 @@
   </main>
 
   <footer class="footer">
-    <p>© 2026 Nombre del Autor</p>
+    <p class="footer__mark" aria-hidden="true">Nombre del Autor</p>
+    <div class="footer__row">
+      <p>© 2026 Nombre del Autor</p>
+      <a href="#inicio">Volver arriba</a>
+    </div>
   </footer>
 
   <script src="js/main.js" defer></script>
